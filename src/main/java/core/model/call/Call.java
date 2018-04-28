@@ -7,8 +7,8 @@ import java.util.UUID;
  * @author paulofelipe
  *
  */
-public class Call {
-	
+public class Call implements Comparable<Call> {
+
 	private String id;
 	private Integer machineNumber;
 	private String lccUsername;
@@ -36,5 +36,16 @@ public class Call {
 	public Long getCreateAt() {
 		return createAt;
 	}
-	
+
+	@Override
+	public int compareTo(Call otherCall) {
+		int result = 0;
+		if (this.createAt < otherCall.getCreateAt()) {
+			result = -1;
+		} else if (this.createAt > otherCall.getCreateAt()) {
+			result = 1;
+		}
+		return result;
+	}
+
 }
