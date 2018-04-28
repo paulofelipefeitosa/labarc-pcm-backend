@@ -1,8 +1,13 @@
-package rest.authentication.model;
+package authentication.token;
 
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 
+ * @author pfelipe
+ *
+ */
 public class Token {
 	private String id;
 	private Long validity;
