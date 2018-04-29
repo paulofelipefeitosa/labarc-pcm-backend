@@ -1,5 +1,10 @@
 package core.model;
 
+/**
+ * 
+ * @author pfelipe
+ *
+ */
 public class PCMException extends Exception {
 
 	/**

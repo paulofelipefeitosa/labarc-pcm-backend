@@ -11,6 +11,11 @@ import java.util.Properties;
 import authentication.token.Token;
 import core.model.PCMException;
 
+/**
+ * 
+ * @author pfelipe
+ *
+ */
 public class DefaultAuthenticationService implements AuthenticationService {
 
 	private static final String ADMIN_CONFIGURARION_FILE = "config/pcm.conf";
