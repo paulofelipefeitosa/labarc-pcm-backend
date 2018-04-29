@@ -45,6 +45,9 @@ public class DefaultCallService implements CallService {
 
 	@Override
 	public synchronized void addCall(Call call) throws PCMException {
+		if (call == null) {
+			throw new PCMException(CallService.INVALID_CALL);
+		}
 		if (this.callQueue.contains(call)) {
 			throw new PCMException(CallService.CALL_ALREADY_EXIST);
 		}
