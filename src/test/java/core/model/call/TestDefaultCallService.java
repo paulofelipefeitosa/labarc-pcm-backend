@@ -64,10 +64,6 @@ public class TestDefaultCallService {
 		this.callService.addCall(call1);
 		this.callService.addCall(call2);
 		
-		for(Call call : this.callService.getAllCalls()) {
-			System.out.println(call.getMachineNumber());
-		}
-
 		Iterator<Call> calls = this.callService.getAllCalls().iterator();
 		
 		Assert.assertSame(call1, calls.next());
