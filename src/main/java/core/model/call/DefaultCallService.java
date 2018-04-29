@@ -11,19 +11,19 @@ import core.model.PCMException;
  *
  */
 public class DefaultCallService implements CallService {
-	Collection<Call> callQueue;
+	private Collection<Call> callQueue;
 
 	public DefaultCallService() {
 		this.callQueue = new PriorityQueue<Call>();
 	}
 
 	@Override
-	public Collection<Call> getAllCalls() {
+	public synchronized Collection<Call> getAllCalls() {
 		return this.callQueue;
 	}
 
 	@Override
-	public void deleteCall(String callId) throws PCMException {
+	public synchronized void deleteCall(String callId) throws PCMException {
 		Call callToBeDeleted = null;
 		for (Call call : this.callQueue) {
 			String queueCallId = call.getId();
@@ -39,12 +39,12 @@ public class DefaultCallService implements CallService {
 	}
 
 	@Override
-	public void deleteAllCalls() throws PCMException {
+	public synchronized void deleteAllCalls() throws PCMException {
 		this.callQueue = new PriorityQueue<Call>();
 	}
 
 	@Override
-	public void addCall(Call call) throws PCMException {
+	public synchronized void addCall(Call call) throws PCMException {
 		if (this.callQueue.contains(call)) {
 			throw new PCMException(CallService.CALL_ALREADY_EXIST);
 		}
