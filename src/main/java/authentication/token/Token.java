@@ -24,6 +24,10 @@ public class Token {
 	public boolean isValid() {
 		return this.validity > System.currentTimeMillis();
 	}
+	
+	protected void setValidity(Long validity) {
+		this.validity = validity;
+	}
 
 	@Override
 	public int hashCode() {
