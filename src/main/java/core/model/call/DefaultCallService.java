@@ -1,7 +1,9 @@
 package core.model.call;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.PriorityQueue;
+import java.util.Collections;
+import java.util.List;
 
 import core.model.PCMException;
 
@@ -11,21 +13,22 @@ import core.model.PCMException;
  *
  */
 public class DefaultCallService implements CallService {
-	private Collection<Call> callQueue;
+	private List<Call> calls;
 
 	public DefaultCallService() {
-		this.callQueue = new PriorityQueue<Call>();
+		this.calls = Collections.synchronizedList(new ArrayList<Call>());
 	}
 
 	@Override
 	public synchronized Collection<Call> getAllCalls() {
-		return this.callQueue;
+		Collections.sort(this.calls);
+		return this.calls;
 	}
 
 	@Override
 	public synchronized void deleteCall(String callId) throws PCMException {
 		Call callToBeDeleted = null;
-		for (Call call : this.callQueue) {
+		for (Call call : this.calls) {
 			String queueCallId = call.getId();
 			if (queueCallId.equals(callId)) {
 				callToBeDeleted = call;
@@ -35,12 +38,12 @@ public class DefaultCallService implements CallService {
 		if (callToBeDeleted == null) {
 			throw new PCMException(CallService.CALL_DOES_NOT_EXIST + " with id [" + callId + "]");
 		}
-		this.callQueue.remove(callToBeDeleted);
+		this.calls.remove(callToBeDeleted);
 	}
 
 	@Override
 	public synchronized void deleteAllCalls() throws PCMException {
-		this.callQueue = new PriorityQueue<Call>();
+		this.calls = new ArrayList<Call>();
 	}
 
 	@Override
@@ -48,9 +51,9 @@ public class DefaultCallService implements CallService {
 		if (call == null) {
 			throw new PCMException(CallService.INVALID_CALL);
 		}
-		if (this.callQueue.contains(call)) {
+		if (this.calls.contains(call)) {
 			throw new PCMException(CallService.CALL_ALREADY_EXIST);
 		}
-		this.callQueue.add(call);
+		this.calls.add(call);
 	}
 }
