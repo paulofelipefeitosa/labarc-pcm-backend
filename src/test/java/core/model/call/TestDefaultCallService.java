@@ -1,5 +1,7 @@
 package core.model.call;
 
+import java.util.Iterator;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,6 +49,30 @@ public class TestDefaultCallService {
 		this.callService.addCall(call3);
 
 		Assert.assertEquals(3, this.callService.getAllCalls().size());
+	}
+	
+	@Test
+	public void testAllCallsInOrder() throws InterruptedException, PCMException {
+		Call call1 = new Call(23, "lccusername1");
+		Thread.sleep(100);
+		Call call2 = new Call(2, "lccusername2");
+		Thread.sleep(100);
+		Call call3 = new Call(3, "lccusername3");
+		Thread.sleep(100);
+		
+		this.callService.addCall(call3);
+		this.callService.addCall(call1);
+		this.callService.addCall(call2);
+		
+		for(Call call : this.callService.getAllCalls()) {
+			System.out.println(call.getMachineNumber());
+		}
+
+		Iterator<Call> calls = this.callService.getAllCalls().iterator();
+		
+		Assert.assertSame(call1, calls.next());
+		Assert.assertSame(call2, calls.next());
+		Assert.assertSame(call3, calls.next());
 	}
 
 	@Test
