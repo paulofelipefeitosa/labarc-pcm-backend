@@ -9,13 +9,13 @@ import labarcpcmbackend.core.exception.PCMException;
 
 public class DefaultAuthenticationService implements AuthenticationService {
 
-	private static final String ADMIN_USERNAME_KEY = "admin_username";
-	private static final String ADMIN_PASSWORD_KEY = "admin_password";
+	protected static final String ADMIN_USERNAME_KEY = "admin_username";
+	protected static final String ADMIN_PASSWORD_KEY = "admin_password";
 
 	private Collection<Token> tokens;
 	private Properties properties;
 
-	public DefaultAuthenticationService(Properties properties) throws PCMException {
+	public DefaultAuthenticationService(Properties properties) {
 		this.properties = properties;
 
 		this.tokens = new LinkedList<Token>();
@@ -38,15 +38,13 @@ public class DefaultAuthenticationService implements AuthenticationService {
 	}
 
 	@Override
-	public boolean isTokenValid(String acessId) {
+	public boolean isTokenValid(String accessId) {
 		this.updateValidTokens();
 
+		Token token = this.getTokenByAccessId(accessId);
 		boolean result = false;
-		for (Token token : this.tokens) {
-			String tokenId = token.getId();
-			if (tokenId.equals(acessId)) {
-				result = true;
-			}
+		if (token != null) {
+			result = true;
 		}
 		return result;
 	}
@@ -57,5 +55,24 @@ public class DefaultAuthenticationService implements AuthenticationService {
 				this.tokens.remove(token);
 			}
 		}
+	}
+
+	private Token getTokenByAccessId(String accessId) {
+		Token result = null;
+		for (Token token : this.tokens) {
+			String tokenId = token.getId();
+			if (tokenId.equals(accessId)) {
+				result = token;
+			}
+		}
+		return result;
+	}
+	
+	/**
+	 * Method created for test.
+	 * @param token
+	 */
+	protected void addToken(Token token) {
+		this.tokens.add(token);
 	}
 }
