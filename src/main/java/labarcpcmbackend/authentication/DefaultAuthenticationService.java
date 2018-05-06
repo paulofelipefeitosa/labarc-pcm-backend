@@ -1,4 +1,4 @@
-package authentication;
+package labarcpcmbackend.authentication;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,14 +8,9 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Properties;
 
-import authentication.token.Token;
-import core.model.PCMException;
+import labarcpcmbackend.authentication.model.Token;
+import labarcpcmbackend.core.exception.PCMException;
 
-/**
- * 
- * @author pfelipe
- *
- */
 public class DefaultAuthenticationService implements AuthenticationService {
 
 	private static final String ADMIN_CONFIGURARION_FILE = "config/pcm.conf";

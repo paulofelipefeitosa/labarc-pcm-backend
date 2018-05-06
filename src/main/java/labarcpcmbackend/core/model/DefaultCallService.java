@@ -1,17 +1,13 @@
-package core.model.call;
+package labarcpcmbackend.core.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import core.model.PCMException;
+import labarcpcmbackend.core.exception.PCMException;
+import labarcpcmbackend.core.model.call.Call;
 
-/**
- * 
- * @author pfelipe
- *
- */
 public class DefaultCallService implements CallService {
 	private List<Call> calls;
 

@@ -1,14 +1,8 @@
-package core.model.call;
+package labarcpcmbackend.core.model.call;
 
 import java.util.UUID;
 
-/**
- * 
- * @author paulofelipe
- *
- */
 public class Call implements Comparable<Call> {
-
 	public static final String MACHINE_NUMBER_INVALID_MSG = "Machine number should be between 1 and 23";
 	public static final String LCC_USERNAME_INVALID_MSG = "The LCC username should not be null or empty";
 
