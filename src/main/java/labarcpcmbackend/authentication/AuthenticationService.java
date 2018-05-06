@@ -1,17 +1,11 @@
-package authentication;
+package labarcpcmbackend.authentication;
 
-import core.model.PCMException;
+import labarcpcmbackend.core.exception.PCMException;
 
-/**
- * 
- * @author pfelipe
- *
- */
 public interface AuthenticationService {
-	
 	public static final String INVALID_CREDENTIALS_MSG = "Invalid Credentials";
-	
+
 	public String createToken(String username, String userPassword) throws PCMException;
-	
+
 	public boolean isTokenValid(String acessId);
 }

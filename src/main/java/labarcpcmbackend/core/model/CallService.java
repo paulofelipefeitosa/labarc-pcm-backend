@@ -1,16 +1,11 @@
-package core.model.call;
+package labarcpcmbackend.core.model;
 
 import java.util.Collection;
 
-import core.model.PCMException;
+import labarcpcmbackend.core.exception.PCMException;
+import labarcpcmbackend.core.model.call.Call;
 
-/**
- * 
- * @author pfelipe
- *
- */
 public interface CallService {
-	
 	public static final String CALL_ALREADY_EXIST = "Call already exist";
 	public static final String CALL_DOES_NOT_EXIST = "There is no call";
 	public static final String INVALID_CALL = "Invalid call";

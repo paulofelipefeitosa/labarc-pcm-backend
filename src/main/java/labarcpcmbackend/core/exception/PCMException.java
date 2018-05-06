@@ -1,12 +1,6 @@
-package core.model;
+package labarcpcmbackend.core.exception;
 
-/**
- * 
- * @author pfelipe
- *
- */
 public class PCMException extends Exception {
-
 	/**
 	 * 
 	 */
@@ -15,5 +9,4 @@ public class PCMException extends Exception {
 	public PCMException(String message) {
 		super(message);
 	}
-
 }

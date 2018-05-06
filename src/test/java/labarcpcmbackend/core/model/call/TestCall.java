@@ -1,4 +1,4 @@
-package core.model.call;
+package labarcpcmbackend.core.model.call;
 
 import org.junit.Assert;
 import org.junit.Test;
