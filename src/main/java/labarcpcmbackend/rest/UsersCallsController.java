@@ -15,6 +15,11 @@ import labarcpcmbackend.core.model.call.Call;
 @RequestMapping(value = "users/calls")
 public class UsersCallsController {
 	
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<String> getCalls() {
+		return new ResponseEntity<String>(HttpStatus.OK);
+	}
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> createCall(@RequestBody Call call) {
 		return new ResponseEntity<String>(HttpStatus.CREATED);
