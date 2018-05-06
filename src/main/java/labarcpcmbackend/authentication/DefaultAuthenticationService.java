@@ -1,9 +1,5 @@
 package labarcpcmbackend.authentication;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Properties;
@@ -13,22 +9,14 @@ import labarcpcmbackend.core.exception.PCMException;
 
 public class DefaultAuthenticationService implements AuthenticationService {
 
-	private static final String ADMIN_CONFIGURARION_FILE = "config/pcm.conf";
 	private static final String ADMIN_USERNAME_KEY = "admin_username";
 	private static final String ADMIN_PASSWORD_KEY = "admin_password";
-
-	public static final String PCM_CONF_FILE_NOT_FOUND_MSG = "There is no pcm configuration file";
 
 	private Collection<Token> tokens;
 	private Properties properties;
 
-	public DefaultAuthenticationService() throws PCMException, IOException {
-		File file = new File(DefaultAuthenticationService.ADMIN_CONFIGURARION_FILE);
-		if (!file.exists()) {
-			throw new PCMException(DefaultAuthenticationService.PCM_CONF_FILE_NOT_FOUND_MSG);
-		}
-		InputStream inputStream = new FileInputStream(file);
-		this.properties.load(inputStream);
+	public DefaultAuthenticationService(Properties properties) throws PCMException {
+		this.properties = properties;
 
 		this.tokens = new LinkedList<Token>();
 	}
