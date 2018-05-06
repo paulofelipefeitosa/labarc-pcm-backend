@@ -8,6 +8,5 @@ public class LabarcPcmBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LabarcPcmBackendApplication.class, args);
-		System.out.println("OLARRR");
 	}
 }
