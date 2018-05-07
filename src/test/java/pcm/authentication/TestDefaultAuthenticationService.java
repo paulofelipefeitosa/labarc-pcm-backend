@@ -21,12 +21,28 @@ public class TestDefaultAuthenticationService {
 	private final String password = "fake-password";
 	
 	@Before
-	public void setUp() {
+	public void setUp() throws PCMException {
 		this.properties = new Properties();
 		this.properties.put(DefaultAuthenticationService.ADMIN_USERNAME_KEY, this.username);
 		this.properties.put(DefaultAuthenticationService.ADMIN_PASSWORD_KEY, this.password);
 		
 		this.authenticationService = new DefaultAuthenticationService(this.properties);
+	}
+	
+	@Test(expected = PCMException.class)
+	public void createAuthenticationServiceWithoutAdminUsername() throws PCMException {
+		Properties properties = new Properties();
+		properties.put(DefaultAuthenticationService.ADMIN_PASSWORD_KEY, this.password);
+		
+		new DefaultAuthenticationService(properties);
+	}
+	
+	@Test(expected = PCMException.class)
+	public void createAuthenticationServiceWithoutAdminPassword() throws PCMException {
+		Properties properties = new Properties();
+		properties.put(DefaultAuthenticationService.ADMIN_USERNAME_KEY, this.username);
+		
+		new DefaultAuthenticationService(properties);
 	}
 	
 	@Test

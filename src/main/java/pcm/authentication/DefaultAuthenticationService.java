@@ -15,10 +15,24 @@ public class DefaultAuthenticationService implements AuthenticationService {
 	private Collection<Token> tokens;
 	private Properties properties;
 
-	public DefaultAuthenticationService(Properties properties) {
+	public DefaultAuthenticationService(Properties properties) throws PCMException {
+		this.checkProperties(properties);
 		this.properties = properties;
 
 		this.tokens = new LinkedList<Token>();
+	}
+
+	private void checkProperties(Properties properties) throws PCMException {
+		String adminUsername = properties
+				.getProperty(DefaultAuthenticationService.ADMIN_USERNAME_KEY);
+		if (adminUsername == null) {
+			throw new PCMException("There is no admin_username configuration in pcm config file");
+		}
+		String adminPassword = properties
+				.getProperty(DefaultAuthenticationService.ADMIN_PASSWORD_KEY);
+		if (adminPassword == null) {
+			throw new PCMException("There is no admin_password configuration in pcm config file");
+		}
 	}
 
 	@Override
@@ -67,9 +81,10 @@ public class DefaultAuthenticationService implements AuthenticationService {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * Method created for test.
+	 * 
 	 * @param token
 	 */
 	protected void addToken(Token token) {

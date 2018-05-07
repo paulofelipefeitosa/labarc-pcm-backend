@@ -17,7 +17,7 @@ public class PCMApplication {
 	private AuthenticationService authenticationService;
 	private CallService callService;
 
-	public PCMApplication(Properties properties) {
+	public PCMApplication(Properties properties) throws PCMException {
 		this.authenticationService = new DefaultAuthenticationService(properties);
 		this.callService = new DefaultCallService();
 	}
