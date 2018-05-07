@@ -1,7 +1,9 @@
-package labarcpcmbackend.core.model.call;
+package pcm.core.model.call;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import pcm.core.model.call.Call;
 
 public class TestCall {
 

@@ -1,6 +1,6 @@
-package labarcpcmbackend.authentication;
+package pcm.authentication;
 
-import labarcpcmbackend.core.exception.PCMException;
+import pcm.core.exception.PCMException;
 
 public interface AuthenticationService {
 	public static final String INVALID_CREDENTIALS_MSG = "Invalid Credentials";

@@ -1,4 +1,4 @@
-package labarcpcmbackend.authentication;
+package pcm.authentication;
 
 import java.util.Properties;
 
@@ -7,8 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import labarcpcmbackend.authentication.model.Token;
-import labarcpcmbackend.core.exception.PCMException;
+import pcm.authentication.DefaultAuthenticationService;
+import pcm.authentication.model.Token;
+import pcm.core.exception.PCMException;
 
 public class TestDefaultAuthenticationService {
 

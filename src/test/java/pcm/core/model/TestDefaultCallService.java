@@ -1,4 +1,4 @@
-package labarcpcmbackend.core.model;
+package pcm.core.model;
 
 import java.util.Iterator;
 
@@ -6,8 +6,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import labarcpcmbackend.core.exception.PCMException;
-import labarcpcmbackend.core.model.call.Call;
+import pcm.core.exception.PCMException;
+import pcm.core.model.CallService;
+import pcm.core.model.DefaultCallService;
+import pcm.core.model.call.Call;
 
 public class TestDefaultCallService {
 	private CallService callService;

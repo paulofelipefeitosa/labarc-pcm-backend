@@ -1,4 +1,4 @@
-package labarcpcmbackend.core.model.call;
+package pcm.core.model.call;
 
 import java.util.UUID;
 

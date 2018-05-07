@@ -1,11 +1,11 @@
-package labarcpcmbackend.authentication;
+package pcm.authentication;
 
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Properties;
 
-import labarcpcmbackend.authentication.model.Token;
-import labarcpcmbackend.core.exception.PCMException;
+import pcm.authentication.model.Token;
+import pcm.core.exception.PCMException;
 
 public class DefaultAuthenticationService implements AuthenticationService {
 

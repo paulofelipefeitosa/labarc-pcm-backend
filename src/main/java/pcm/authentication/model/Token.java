@@ -1,4 +1,4 @@
-package labarcpcmbackend.authentication.model;
+package pcm.authentication.model;
 
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;

@@ -1,9 +1,9 @@
-package labarcpcmbackend.authentication.model;
+package pcm.authentication.model;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import labarcpcmbackend.authentication.model.Token;
+import pcm.authentication.model.Token;
 
 public class TestToken {
 	

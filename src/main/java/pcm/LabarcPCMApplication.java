@@ -1,4 +1,4 @@
-package labarcpcmbackend;
+package pcm;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,21 +9,21 @@ import java.util.Properties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import labarcpcmbackend.core.exception.PCMException;
+import pcm.core.exception.PCMException;
 
 @SpringBootApplication
-public class LabarcPcmBackendApplication {
+public class LabarcPCMApplication {
 	
 	private static final String ADMIN_CONFIGURARION_FILE = "config/pcm.conf";
 	
 	public static final String PCM_CONF_FILE_NOT_FOUND_MSG = "There is no pcm configuration file";
 
 	public static void main(String[] args) throws PCMException, IOException {
-		SpringApplication.run(LabarcPcmBackendApplication.class, args);
+		SpringApplication.run(LabarcPCMApplication.class, args);
 		
-		File file = new File(LabarcPcmBackendApplication.ADMIN_CONFIGURARION_FILE);
+		File file = new File(LabarcPCMApplication.ADMIN_CONFIGURARION_FILE);
 		if (!file.exists()) {
-			throw new PCMException(LabarcPcmBackendApplication.PCM_CONF_FILE_NOT_FOUND_MSG);
+			throw new PCMException(LabarcPCMApplication.PCM_CONF_FILE_NOT_FOUND_MSG);
 		}
 		InputStream inputStream = new FileInputStream(file);
 		

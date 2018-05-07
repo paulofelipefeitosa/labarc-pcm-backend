@@ -1,4 +1,4 @@
-package labarcpcmbackend.core.exception;
+package pcm.core.exception;
 
 public class PCMException extends Exception {
 	/**
