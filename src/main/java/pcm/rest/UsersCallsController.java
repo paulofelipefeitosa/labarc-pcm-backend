@@ -1,13 +1,16 @@
 package pcm.rest;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import pcm.core.PCMApplication;
+import pcm.core.exception.PCMException;
 import pcm.core.model.call.Call;
 
 @CrossOrigin
@@ -15,13 +18,21 @@ import pcm.core.model.call.Call;
 @RequestMapping(value = "users/calls")
 public class UsersCallsController {
 	
+	private final PCMApplication pcmApplication;
+	
+	@Autowired
+	UsersCallsController(PCMApplication application) {
+		this.pcmApplication = application;
+	}
+	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<String> getCalls() {
-		return new ResponseEntity<String>(HttpStatus.OK);
+	public Collection<Call> getCalls() {
+		return this.pcmApplication.getAllCalls();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<String> createCall(@RequestBody Call call) {
-		return new ResponseEntity<String>(HttpStatus.CREATED);
+	public Call createCall(@RequestBody Call call) throws PCMException {
+		this.pcmApplication.addCall(call);
+		return call;
 	}
 }
