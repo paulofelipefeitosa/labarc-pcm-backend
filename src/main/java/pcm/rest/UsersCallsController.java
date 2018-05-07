@@ -18,11 +18,11 @@ import pcm.core.model.call.Call;
 @RequestMapping(value = "users/calls")
 public class UsersCallsController {
 	
-	private final PCMApplication pcmApplication;
-	
+	private PCMApplication pcmApplication;
+
 	@Autowired
-	UsersCallsController(PCMApplication application) {
-		this.pcmApplication = application;
+	public UsersCallsController(PCMApplication pcmApplication) throws PCMException {
+		this.pcmApplication = pcmApplication;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
