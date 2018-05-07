@@ -1,9 +1,6 @@
 package pcm.core;
 
 import java.util.Collection;
-import java.util.Properties;
-
-import org.springframework.stereotype.Component;
 
 import pcm.authentication.AuthenticationService;
 import pcm.authentication.DefaultAuthenticationService;
@@ -12,13 +9,13 @@ import pcm.core.model.CallService;
 import pcm.core.model.DefaultCallService;
 import pcm.core.model.call.Call;
 
-@Component("pcmApplication")
 public class PCMApplication {
+
 	private AuthenticationService authenticationService;
 	private CallService callService;
 
-	public PCMApplication(Properties properties) throws PCMException {
-		this.authenticationService = new DefaultAuthenticationService(properties);
+	public PCMApplication() throws PCMException {
+		this.authenticationService = new DefaultAuthenticationService();
 		this.callService = new DefaultCallService();
 	}
 
