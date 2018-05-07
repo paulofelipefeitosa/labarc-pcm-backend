@@ -2,6 +2,7 @@ package pcm.rest;
 
 import java.util.Collection;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +20,9 @@ public class UsersCallsController {
 	
 	private PCMApplication pcmApplication;
 
-	public UsersCallsController() throws PCMException {
-		this.pcmApplication = new PCMApplication();
+	@Autowired
+	public UsersCallsController(PCMApplication pcmApplication) throws PCMException {
+		this.pcmApplication = pcmApplication;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)

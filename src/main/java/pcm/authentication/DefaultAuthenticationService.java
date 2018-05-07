@@ -3,33 +3,36 @@ package pcm.authentication;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import pcm.PCMProperties;
 import pcm.authentication.model.Token;
 import pcm.core.exception.PCMException;
 
+@Component
 public class DefaultAuthenticationService implements AuthenticationService {
-
-	protected static final String ADMIN_USERNAME_KEY = "adminUsername";
-	protected static final String ADMIN_PASSWORD_KEY = "adminPassword";
 
 	private Collection<Token> tokens;
 
 	private PCMProperties properties;
 
-	@PostConstruct
-	public DefaultAuthenticationService() throws PCMException {
-		this.properties = new PCMProperties();
-		this.checkProperties(this.properties);
+	@Autowired
+	public DefaultAuthenticationService(PCMProperties properties) throws PCMException {
+		this.properties = properties;
 
 		this.tokens = new LinkedList<Token>();
 	}
-
-	private void checkProperties(PCMProperties properties) throws PCMException {
-		String adminUsername = properties.getAdminUsername();
+	
+	@PostConstruct
+	private void checkProperties() throws PCMException {
+		String adminUsername = this.properties.getAdminUsername();
 		if (adminUsername == null) {
 			throw new PCMException("There is no admin_username configuration in pcm config file");
 		}
-		String adminPassword = properties.getAdminPassword();
+		String adminPassword = this.properties.getAdminPassword();
 		if (adminPassword == null) {
 			throw new PCMException("There is no admin_password configuration in pcm config file");
 		}

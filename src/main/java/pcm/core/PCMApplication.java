@@ -2,6 +2,9 @@ package pcm.core;
 
 import java.util.Collection;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import pcm.authentication.AuthenticationService;
 import pcm.authentication.DefaultAuthenticationService;
 import pcm.core.exception.PCMException;
@@ -9,13 +12,15 @@ import pcm.core.model.CallService;
 import pcm.core.model.DefaultCallService;
 import pcm.core.model.call.Call;
 
+@Component
 public class PCMApplication {
 
 	private AuthenticationService authenticationService;
 	private CallService callService;
 
-	public PCMApplication() throws PCMException {
-		this.authenticationService = new DefaultAuthenticationService();
+	@Autowired
+	public PCMApplication(DefaultAuthenticationService authenticationService) throws PCMException {
+		this.authenticationService = authenticationService;
 		this.callService = new DefaultCallService();
 	}
 
