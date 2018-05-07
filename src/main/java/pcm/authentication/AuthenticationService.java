@@ -7,5 +7,5 @@ public interface AuthenticationService {
 
 	public String createToken(String username, String userPassword) throws PCMException;
 
-	public boolean isTokenValid(String acessId);
+	public boolean isTokenValid(String accessId);
 }
